@@ -70,7 +70,6 @@
     
         let input = rawInput.replaceAll('\n', ' ').replaceAll('.', ' ').replaceAll('joined the room', 'joined').replaceAll('joined the lobby', 'joined').trim();
         //if (!ONLY_NUMBER_LETTER_REGEX.test(input)) throw new Error(`${rawInput} contains an invalid character.`);
-        const pushedSummoners = new Set();
         let summoners = [];
         let summonerCount = 0;
         
