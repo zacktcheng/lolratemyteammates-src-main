@@ -70,6 +70,7 @@
     
         let input = rawInput.replaceAll('\n', ' ').replaceAll('.', ' ').replaceAll('joined the room', 'joined').replaceAll('joined the lobby', 'joined').trim();
         //if (!ONLY_NUMBER_LETTER_REGEX.test(input)) throw new Error(`${rawInput} contains an invalid character.`);
+        const pushedSummoners = new Set();
         let summoners = [];
         let summonerCount = 0;
         
@@ -78,18 +79,23 @@
             const endIndex = input.indexOf('joined');
             let summoner_name;
             if (endIndex != -1) {
-                summoner_name = input.substring(startIndex, endIndex);
+                summoner_name = input.substring(startIndex, endIndex).trim();
                 input = input.substring(endIndex + 'joined'.length);
             } else {
-                summoner_name = input;
+                summoner_name = input.trim();
                 input = '';
             }
-            summoners.push(
-              {
-                'summoner_name': summoner_name
-              }
-            );
-            summonerCount++;
+            const found = summoners.find(item => { 
+              return item['summoner_name'] == summoner_name
+            });
+            if (!found) {
+                summoners.push(
+                  {
+                    'summoner_name': summoner_name
+                  }
+                );
+                summonerCount++;
+            }
         }
         return summoners;
     }
@@ -160,6 +166,8 @@
             if (summoners.length < 1) return;
             const url = BASE_URL;
             const req = JSON.stringify(summoners);
+            console.log(url, req);
+            return;
             return new Promise((resolve) => {
 		        load();
 		        ajax('GET', url, req, (res) => {
