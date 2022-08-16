@@ -165,8 +165,6 @@
             if (summoners.length < 1) return;
             const url = BASE_URL;
             const req = JSON.stringify(summoners);
-            console.log(url, req);
-            return;
             return new Promise((resolve) => {
 		        load();
 		        ajax('GET', url, req, (res) => {
