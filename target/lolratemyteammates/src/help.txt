@@ -1,0 +1,3 @@
+Please copy the lobby information of your teammates and paste them to the input area and click the search button. For example: Yasuo Miso joined the lobby
+What is a dodge warning ----> if you see the dodge warning, you can dodge the rank because the marked red player(s) have toxic performance( low KDA, low recent/overall win rate and losing more than 4 games in a row)
+User input Warning:You should not copy and paste more than 4 players' information since too much API request to riot would not be accepted.
